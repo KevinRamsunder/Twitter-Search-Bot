@@ -18,8 +18,7 @@ public class Downloader {
    public static String write(String username, String url) {
       // take the url and replace all special characters as
       // to comply to standard filename conventions
-      String filename = url.replaceAll("\\\\|\\/|\\:|\\*|\\?|\"|\\<|\\>|\\|",
-            ".");
+      String filename = url.replaceAll("\\\\|\\/|\\:|\\*|\\?|\"|\\<|\\>|\\|", ".");
 
       String path = "downloads\\" + username + "\\";
 
@@ -55,15 +54,10 @@ public class Downloader {
       try {
          while (matcher.find()) {
             // get url
-            String url = matcher.group().substring(
-                  matcher.group().indexOf("\"") + 1);
+            String url = matcher.group().substring(matcher.group().indexOf("\"") + 1);
             
             // Download each found URL
-            Write.UrlToFile(
-                  new URL(url).openConnection(),
-                  path
-                        + url.replaceAll("\\\\|\\/|\\:|\\*|\\?|\"|\\<|\\>|\\|",
-                              "."));
+            Write.UrlToFile(new URL(url).openConnection(), path+ url.replaceAll("\\\\|\\/|\\:|\\*|\\?|\"|\\<|\\>|\\|", "."));
          }
       } catch (IOException e) {
          IO.displayGUI(e.getLocalizedMessage());

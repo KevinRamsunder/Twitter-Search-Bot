@@ -84,8 +84,7 @@ public class Write {
    }
 
    /** Write images or other file types to local system */
-   private static void writeOtherToFile(URLConnection connection,
-         String filename) {
+   private static void writeOtherToFile(URLConnection connection, String filename) {
       // get file extension
       String extension = getExtension(connection);
 
@@ -93,9 +92,7 @@ public class Write {
          // open the URL stream to get the input stream
          InputStream inputStream = connection.getURL().openStream();
 
-         // download file to directory
-         // consult:
-         // http://docs.oracle.com/javase/7/docs/api/java/nio/file/Files.html
+         // download file to directory.
          Files.copy(inputStream, new File(filename + extension).toPath());
       } catch (IOException e) {
          System.out.println(e.getLocalizedMessage());
